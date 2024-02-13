@@ -42,22 +42,72 @@ const departamentosColombia = [
 
 function Payment() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpenPurchaseSummary, setIsOpenPurchaseSummary] = useState(false);
+
+  const handleOpenPurchaseSummary = () => {
+    setIsOpenPurchaseSummary(!isOpenPurchaseSummary);
+  };
 
   return (
     <div className="min-h-screen bg-white">
       <NavigationBar setIsMenuOpen={setIsMenuOpen} />
       <Aside isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <div className="w-full sm:w-[30rem] md:w-[40rem] flex flex-col items-center justify-center text-sm sm:text-lg m-auto px-5">
-        <div className="w-full flex flex-wrap justify-center gap-2 p-2">
-          <p className="flex items-center text-green-500 gap-1">Ocultar resumen del pedido <ion-icon name="chevron-up-outline"></ion-icon></p>
-          <p className="font-bold text-gray-600">$ 275.000,00</p>
+        <div className="w-full flex flex-wrap justify-between gap-2 p-2">
+          <p
+            className="flex items-center text-green-500 gap-1 cursor-pointer"
+            onClick={() => handleOpenPurchaseSummary()}
+          >
+            {!isOpenPurchaseSummary ? (
+              <>
+                Mostrar resumen del pedido
+                <ion-icon name="chevron-down-outline"></ion-icon>
+              </>
+            ) : (
+              <>
+                Ocultar resumen del pedido
+                <ion-icon name="chevron-up-outline"></ion-icon>
+              </>
+            )}
+          </p>
+          <p className="font-bold text-gray-800">$ 118.000,00</p>
         </div>
-        <div className="w-full flex justify-center">
-          <div className="w-full flex flex-col gap-2">
-            <ProductItem/>
-            <ProductItem/>
-            <ProductItem/>
-          </div>
+        <div
+          className={`w-full ${
+            isOpenPurchaseSummary
+              ? "scale-100 opacity-100"
+              : "scale-0 opacity-0"
+          } duration-700`}
+        >
+          {isOpenPurchaseSummary && (
+            <>
+              <div className="w-full flex justify-center">
+                <div className="w-full flex flex-col gap-2">
+                  <ProductItem />
+                  <ProductItem />
+                  <ProductItem />
+                </div>
+              </div>
+              {/* Purchase datails */}
+              <div className="w-full flex flex-col text-sm font-light bg-gray-100 rounded-xl gap-2 mt-3 p-3">
+                <div className="flex justify-between">
+                  <p>Subtotal</p>
+                  <p className="font-semibold">105.000,00 $</p>
+                </div>
+                <div className="flex justify-between">
+                  <p>Métodos de envío</p>
+                  <p className="font-light">13.000,00 $</p>
+                </div>
+                <div className="flex justify-between items-center font-bold text-lg">
+                  <p>Total</p>
+                  <p>
+                    <span className="font-light text-[0.8rem]">COP</span>{" "}
+                    118.000,00 $
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
       <form className="w-full flex flex-col items-center my-5">

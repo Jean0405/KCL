@@ -1,139 +1,70 @@
-import { Image } from "@nextui-org/react";
-import React from "react";
+import { Button, Image } from "@nextui-org/react";
+import { products } from "../../data";
+import { useEffect, useState } from "react";
 
 function ProductCard() {
+  const [cart, setCart] = useState([]);
+
+  const handleAddToCart = (product) => {
+
+    const NewProduct = {
+      ...product,
+      quantity:1
+    }
+
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingProduct = storedCart.find((item) => item.id === NewProduct.id);
+
+    if (existingProduct) {
+      const updatedCart = storedCart.map(
+        item => item.id === NewProduct.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    } else {
+      const updatedCart = [...storedCart, NewProduct];
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+  };
+
+
   return (
     <div className="mt-10">
-        <h1 className="text-center font-bold text-4xl text-gray-600">PRODUCTOS</h1>
-        {/* CARDS CONTAINER */}
-      <div className="grid grid-cols-2 md:grid-cols-4 md:mx-[10rem] p-2 gap-3">
+      <h1 className="text-center font-bold text-4xl text-gray-600">
+        PRODUCTOS
+      </h1>
+      {/* CARDS CONTAINER */}
+      <div className="grid grid-cols-2 md:grid-cols-4 place-items-center md:mx-[4rem] p-2 mt-5 gap-3">
         {/* CARD */}
-        <div className="flex flex-col max-w-[20rem] gap-2 cursor-pointer">
-          <div className="overflow-hidden rounded-xl group">
-          <Image
-            className="hover:scale-110"
-            src="https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEALMENDRAS.jpg?v=1670310178&width=600"
-            alt="product image"
-          />
+        {products.map((product) => (
+          <div
+            className="flex flex-col max-w-[20rem] gap-2 cursor-pointer"
+            key={product.name + product.price}
+          >
+            <div className="relative overflow-hidden rounded-xl group">
+              <Button
+                onClick={() => handleAddToCart(product)}
+                className="absolute w-full bottom-0 bg-black text-white font-semibold rounded-none z-10 hover:bg-green-100 hover:text-black"
+              >
+                Añadir
+              </Button>
+              <Image
+                className="hover:scale-110 z-0"
+                src={product.img}
+                alt="product image"
+              />
+            </div>
+            <div className="w-full flex flex-col items-center text-sm text-black py-1">
+              <h3 className="font-bold text-center">{product.name}</h3>
+              <span className="font-bold">${product.price}</span>
+            </div>
           </div>
-          <div className="flex flex-col items-center">
-            <h3 className="font-bold text-center">Aceite de almendras</h3>
-            <span className="text-gray-500 font-bold">$17.000</span>
-          </div>
-        </div>
+        ))}
         {/* ------------------------------------------------------------ */}
-        {/* CARD */}
-        <div className="flex flex-col max-w-[20rem] gap-2 cursor-pointer">
-          <div className="overflow-hidden rounded-xl group">
-          <Image
-            className="hover:scale-110"
-            src="https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEALMENDRAS.jpg?v=1670310178&width=600"
-            alt="product image"
-          />
-          </div>
-          <div className="flex flex-col items-center">
-            <h3 className="font-bold text-center">Aceite de almendras</h3>
-            <span className="text-gray-500 font-bold">$17.000</span>
-          </div>
-        </div>
-        {/* CARD */}
-        <div className="flex flex-col max-w-[20rem] gap-2 cursor-pointer">
-          <div className="overflow-hidden rounded-xl group">
-          <Image
-            className="hover:scale-110"
-            src="https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEALMENDRAS.jpg?v=1670310178&width=600"
-            alt="product image"
-          />
-          </div>
-          <div className="flex flex-col items-center">
-            <h3 className="font-bold text-center">Aceite de almendras</h3>
-            <span className="text-gray-500 font-bold">$17.000</span>
-          </div>
-        </div>
-        {/* CARD */}
-        <div className="flex flex-col max-w-[20rem] gap-2 cursor-pointer">
-          <div className="overflow-hidden rounded-xl group">
-          <Image
-            className="hover:scale-110"
-            src="https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEALMENDRAS.jpg?v=1670310178&width=600"
-            alt="product image"
-          />
-          </div>
-          <div className="flex flex-col items-center">
-            <h3 className="font-bold text-center">Aceite de almendras</h3>
-            <span className="text-gray-500 font-bold">$17.000</span>
-          </div>
-        </div>
-        {/* CARD */}
-        <div className="flex flex-col max-w-[20rem] gap-2 cursor-pointer">
-          <div className="overflow-hidden rounded-xl group">
-          <Image
-            className="hover:scale-110"
-            src="https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEALMENDRAS.jpg?v=1670310178&width=600"
-            alt="product image"
-          />
-          </div>
-          <div className="flex flex-col items-center">
-            <h3 className="font-bold text-center">Aceite de almendras</h3>
-            <span className="text-gray-500 font-bold">$17.000</span>
-          </div>
-        </div>
-        {/* CARD */}
-        <div className="flex flex-col max-w-[20rem] gap-2 cursor-pointer">
-          <div className="overflow-hidden rounded-xl group">
-          <Image
-            className="hover:scale-110"
-            src="https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEALMENDRAS.jpg?v=1670310178&width=600"
-            alt="product image"
-          />
-          </div>
-          <div className="flex flex-col items-center">
-            <h3 className="font-bold text-center">Aceite de almendras</h3>
-            <span className="text-gray-500 font-bold">$17.000</span>
-          </div>
-        </div>
-        {/* CARD */}
-        <div className="flex flex-col max-w-[20rem] gap-2 cursor-pointer">
-          <div className="overflow-hidden rounded-xl group">
-          <Image
-            className="hover:scale-110"
-            src="https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEALMENDRAS.jpg?v=1670310178&width=600"
-            alt="product image"
-          />
-          </div>
-          <div className="flex flex-col items-center">
-            <h3 className="font-bold text-center">Aceite de almendras</h3>
-            <span className="text-gray-500 font-bold">$17.000</span>
-          </div>
-        </div>
-        {/* CARD */}
-        <div className="flex flex-col max-w-[20rem] gap-2 cursor-pointer">
-          <div className="overflow-hidden rounded-xl group">
-          <Image
-            className="hover:scale-110"
-            src="https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEALMENDRAS.jpg?v=1670310178&width=600"
-            alt="product image"
-          />
-          </div>
-          <div className="flex flex-col items-center">
-            <h3 className="font-bold text-center">Aceite de almendras</h3>
-            <span className="text-gray-500 font-bold">$17.000</span>
-          </div>
-        </div>
-        {/* CARD */}
-        <div className="flex flex-col max-w-[20rem] gap-2 cursor-pointer">
-          <div className="overflow-hidden rounded-xl group">
-          <Image
-            className="hover:scale-110"
-            src="https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEALMENDRAS.jpg?v=1670310178&width=600"
-            alt="product image"
-          />
-          </div>
-          <div className="flex flex-col items-center">
-            <h3 className="font-bold text-center">Aceite de almendras</h3>
-            <span className="text-gray-500 font-bold">$17.000</span>
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import React from "react";
 
 function ProductItem() {
   return (
-    <div className="bg-gray-100 rounded-2xl w-full flex justify-between items-center text-sm sm:text-lg gap-3 p-2">
+    <div className="bg-gray-100 rounded-2xl w-full flex justify-between items-center text-sm sm:text-lg gap-3 p-2  hover:bg-gray-200 cursor-pointer">
       <div className="flex justify-between items-center gap-2">
         <Image
           className="w-[3.2rem] h-[3.5rem]"
