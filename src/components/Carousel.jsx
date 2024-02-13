@@ -22,19 +22,19 @@ export default function Carousel() {
       >
         <SwiperSlide className="w-full h-full flex flex-col justify-center items-center p-2 ">
           <div className="relative w-full h-full flex justify-center">
-          <Image
-            className="h-[40rem] w-full object-cover"
-            alt="product image"
-            src="https://www.fusionselvatica.com/cdn/shop/files/SHAMPOOANCESTRAL500ML.png?v=1705972376&width=700"
-          />
-          <div className="absolute bottom-10 w-full flex flex-col justify-center items-center text-center p-1 gap-1 z-10">
-            <h2 className="text-black font-bold text-xl bottom-10">
-              Shampoo Ancestral PREMIUM
-            </h2>
-            <Button className="bg-black text-white rounded-lg">
-              PIDELO YA
-            </Button>
-          </div>
+            <Image
+              className="h-[40rem] w-full object-cover"
+              alt="product image"
+              src="https://www.fusionselvatica.com/cdn/shop/files/SHAMPOOANCESTRAL500ML.png?v=1705972376&width=700"
+            />
+            <div className="absolute bottom-10 w-full flex flex-col justify-center items-center text-center p-1 gap-1 z-10">
+              <h2 className="text-white font-bold text-xl md:text-3xl bottom-10">
+                Shampoo Ancestral PREMIUM
+              </h2>
+              <Button className="bg-black text-white rounded-lg hover:scale-110">
+                PIDELO YA
+              </Button>
+            </div>
           </div>
         </SwiperSlide>
       </Swiper>

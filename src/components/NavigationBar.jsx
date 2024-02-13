@@ -2,7 +2,7 @@ import React from 'react'
 
 function NavigationBar({setIsMenuOpen}) {
   return (
-    <div className='bg-white flex justify-between items-center p-3'>
+    <div className='bg-green-100 flex justify-between items-center p-3'>
         <div className='md:hidden flex items-end text-4xl'>
             <span className='cursor-pointer group hover:scale-110 duration-500' onClick={()=>setIsMenuOpen(true)}><ion-icon name="menu-outline"></ion-icon></span>
         </div>
