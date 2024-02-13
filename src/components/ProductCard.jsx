@@ -2,19 +2,20 @@ import { Button, Image } from "@nextui-org/react";
 import { products } from "../../data";
 import { useEffect } from "react";
 
-function ProductCard({setCart}) {
-
+function ProductCard({ setCart }) {
   const handleAddToCart = (product) => {
     const NewProduct = {
       ...product,
-      quantity:1
-    }
+      quantity: 1,
+    };
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingProduct = storedCart.find((item) => item.id === NewProduct.id);
+    const existingProduct = storedCart.find(
+      (item) => item.id === NewProduct.id
+    );
 
     if (existingProduct) {
-      const updatedCart = storedCart.map(
-        item => item.id === NewProduct.id
+      const updatedCart = storedCart.map((item) =>
+        item.id === NewProduct.id
           ? { ...item, quantity: item.quantity + 1 }
           : item
       );
@@ -28,11 +29,10 @@ function ProductCard({setCart}) {
     }
   };
 
-
-useEffect(()=>{
-  const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-  setCart(storedCart);
-},[])
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+  }, []);
 
   return (
     <div className="mt-10">
@@ -44,9 +44,17 @@ useEffect(()=>{
         {/* CARD */}
         {products.map((product) => (
           <div
-            className="flex flex-col max-w-[20rem] gap-2 cursor-pointer"
-            key={product.name + product.price}
+            className="relative flex flex-col max-w-[20rem] gap-2 cursor-pointer overflow-hidden"
+            key={product.id}
           >
+            {product.promo && (
+              <div className="absolute w-[8rem] h-[2rem] flex justify-start items-center top-[1rem] -right-10 sm:-right-4
+               flex bg-red-600 text-white z-10 px-1">
+                <p className="font-bold flex text-xl">
+                  - {product.promo} <span>%</span>
+                </p>
+              </div>
+            )}
             <div className="relative overflow-hidden rounded-xl group">
               <Button
                 onClick={() => handleAddToCart(product)}

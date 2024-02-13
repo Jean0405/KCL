@@ -23,10 +23,9 @@ function Aside({isMenuOpen, setIsMenuOpen}) {
           </div>
           <div className="dark:text-green-100 flex flex-col gap-2 p-3">
             <div className='text-xl'>Redes sociales</div>
-            <div className='flex text-4xl gap-4'>
-            <span className="hover:text-blue-700 cursor-pointer"><ion-icon name="logo-facebook"></ion-icon></span>
-            <span className="hover:text-rose-600 cursor-pointer"><ion-icon name="logo-instagram"></ion-icon></span>
-            <span className="hover:text-green-600 cursor-pointer"><ion-icon name="logo-whatsapp"></ion-icon></span>
+            <div className='flex gap-4'>
+            <Link className="text-black hover:text-rose-700 text-4xl cursor-pointer"><ion-icon name="logo-instagram"></ion-icon></Link>
+            <Link className="text-black hover:text-blue-700 text-4xl cursor-pointer"><ion-icon name="logo-facebook"></ion-icon></Link>
             </div>
           </div>
         </div>

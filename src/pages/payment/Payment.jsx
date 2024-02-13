@@ -40,8 +40,7 @@ const departamentosColombia = [
   "Vichada",
 ];
 
-function Payment() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+function Payment({isMenuOpen, setIsMenuOpen, cart, setCart}) {
   const [isOpenPurchaseSummary, setIsOpenPurchaseSummary] = useState(false);
 
   const handleOpenPurchaseSummary = () => {
@@ -49,8 +48,8 @@ function Payment() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <NavigationBar setIsMenuOpen={setIsMenuOpen} />
+    <div className="min-h-screen bg-white mt-[9rem]">
+      <NavigationBar setIsMenuOpen={setIsMenuOpen} cart={cart}/>
       <Aside isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <div className="w-full sm:w-[30rem] md:w-[40rem] flex flex-col items-center justify-center text-sm sm:text-lg m-auto px-5">
         <div className="w-full flex flex-wrap justify-between gap-2 p-2">
@@ -198,13 +197,13 @@ function Payment() {
         <div className="px-3 w-full sm:w-[30rem] md:w-[40rem]">
           <button
             type="submit"
-            class="relative group cursor-pointer text-sky-50  overflow-hidden h-16 w-full rounded-md bg-green-800 p-2 flex justify-center items-center font-extrabold"
+            className="relative group cursor-pointer text-sky-50  overflow-hidden h-16 w-full rounded-md bg-green-800 p-2 flex justify-center items-center font-extrabold"
           >
-            <div class="absolute top-3 right-20 group-hover:top-12 group-hover:-right-12 z-10 w-40 h-40 rounded-full group-hover:scale-150 group-hover:opacity-50 duration-500 bg-green-900"></div>
-            <div class="absolute top-3 right-20 group-hover:top-12 group-hover:-right-12 z-10 w-32 h-32 rounded-full group-hover:scale-150 group-hover:opacity-50 duration-500 bg-green-800"></div>
-            <div class="absolute top-3 right-20 group-hover:top-12 group-hover:-right-12 z-10 w-24 h-24 rounded-full group-hover:scale-150 group-hover:opacity-50 duration-500 bg-green-700"></div>
-            <div class="absolute top-3 right-20 group-hover:top-12 group-hover:-right-12 z-10 w-14 h-14 rounded-full group-hover:scale-150 group-hover:opacity-50 duration-500 bg-green-600"></div>
-            <p class="z-10">Pedir ahora</p>
+            <div className="absolute top-3 right-20 group-hover:top-12 group-hover:-right-12 z-10 w-40 h-40 rounded-full group-hover:scale-150 group-hover:opacity-50 duration-500 bg-green-900"></div>
+            <div className="absolute top-3 right-20 group-hover:top-12 group-hover:-right-12 z-10 w-32 h-32 rounded-full group-hover:scale-150 group-hover:opacity-50 duration-500 bg-green-800"></div>
+            <div className="absolute top-3 right-20 group-hover:top-12 group-hover:-right-12 z-10 w-24 h-24 rounded-full group-hover:scale-150 group-hover:opacity-50 duration-500 bg-green-700"></div>
+            <div className="absolute top-3 right-20 group-hover:top-12 group-hover:-right-12 z-10 w-14 h-14 rounded-full group-hover:scale-150 group-hover:opacity-50 duration-500 bg-green-600"></div>
+            <p className="z-10">Pedir ahora</p>
           </button>
         </div>
       </form>
