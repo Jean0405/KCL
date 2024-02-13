@@ -1,17 +1,14 @@
 import { Button, Image } from "@nextui-org/react";
 import { products } from "../../data";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-function ProductCard() {
-  const [cart, setCart] = useState([]);
+function ProductCard({setCart}) {
 
   const handleAddToCart = (product) => {
-
     const NewProduct = {
       ...product,
       quantity:1
     }
-
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     const existingProduct = storedCart.find((item) => item.id === NewProduct.id);
 
@@ -31,6 +28,11 @@ function ProductCard() {
     }
   };
 
+
+useEffect(()=>{
+  const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+  setCart(storedCart);
+},[])
 
   return (
     <div className="mt-10">

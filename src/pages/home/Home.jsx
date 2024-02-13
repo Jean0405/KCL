@@ -7,13 +7,14 @@ import ProductCard from "../../components/ProductCard";
 
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [cart, setCart] = useState([]);
 
   return (
     <div className="relative min-h-screen bg-white">
-      <NavigationBar setIsMenuOpen={setIsMenuOpen}/>
+      <NavigationBar setIsMenuOpen={setIsMenuOpen} cart={cart}/>
       <Aside setIsMenuOpen={setIsMenuOpen}/>
       <Carousel/>
-      <ProductCard/>
+      <ProductCard cart={cart} setCart={setCart}/>
     </div>
   );
 }
