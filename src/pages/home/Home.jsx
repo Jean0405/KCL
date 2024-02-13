@@ -12,7 +12,7 @@ function Home() {
   return (
     <div className="relative min-h-screen bg-white">
       <NavigationBar setIsMenuOpen={setIsMenuOpen} cart={cart}/>
-      <Aside setIsMenuOpen={setIsMenuOpen}/>
+      <Aside setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}/>
       <Carousel/>
       <ProductCard cart={cart} setCart={setCart}/>
     </div>
