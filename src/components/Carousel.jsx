@@ -28,10 +28,10 @@ export default function Carousel() {
               src="https://www.fusionselvatica.com/cdn/shop/files/SHAMPOOANCESTRAL500ML.png?v=1705972376&width=700"
             />
             <div className="absolute bottom-10 w-full flex flex-col justify-center items-center text-center p-1 gap-1 z-10">
-              <h2 className="text-white font-bold text-xl md:text-3xl bottom-10">
+              <h2 className="text-white font-bold text-2xl sm:text-3xl md:text-4xl bottom-10">
                 Shampoo Ancestral PREMIUM
               </h2>
-              <Button className="bg-black text-white rounded-lg hover:scale-110">
+              <Button className="bg-black text-green-100 font-bold rounded-lg hover:scale-110">
                 PIDELO YA
               </Button>
             </div>

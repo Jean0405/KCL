@@ -9,9 +9,9 @@ function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-white">
       <NavigationBar setIsMenuOpen={setIsMenuOpen}/>
-      <Aside isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
+      <Aside setIsMenuOpen={setIsMenuOpen}/>
       <Carousel/>
       <ProductCard/>
     </div>
