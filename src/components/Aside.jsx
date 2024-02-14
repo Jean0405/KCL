@@ -10,14 +10,11 @@ function Aside({isMenuOpen, setIsMenuOpen}) {
               <span className="cursor-pointer" onClick={()=>setIsMenuOpen(false)}><ion-icon name="close-outline"></ion-icon></span>
             </div>
             <div className="flex flex-col gap-4 mt-5 p-3">
-              <Link className="text-black dark:text-green-100 cursor-pointer text-xl">
+              <Link href="/" className="text-black dark:text-green-100 cursor-pointer text-xl">
                 Inicio
               </Link>
-              <Link className="text-black dark:text-green-100 cursor-pointer text-xl">
-                Productos
-              </Link>
-              <Link className="text-black dark:text-green-100 cursor-pointer text-xl">
-                Contáctanos
+              <Link href="/payment" className="text-black dark:text-green-100 cursor-pointer text-xl">
+                Comprar ahora
               </Link>
             </div>
           </div>

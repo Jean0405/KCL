@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Aside from "../../components/Aside";
 
-import { Checkbox } from "@nextui-org/react";
+import { Checkbox, Textarea } from "@nextui-org/react";
 import ProductItem from "../../components/ProductItem";
+import CardAside from "../../components/CardAside";
 
 const departamentosColombia = [
   "Amazonas",
@@ -39,7 +40,7 @@ const departamentosColombia = [
   "Vichada",
 ];
 
-function Payment({isMenuOpen, setIsMenuOpen}) {
+function Payment({ isMenuOpen, setIsMenuOpen, isCartOpen, setIsCartOpen }) {
   const [isOpenPurchaseSummary, setIsOpenPurchaseSummary] = useState(false);
 
   const handleOpenPurchaseSummary = () => {
@@ -49,6 +50,7 @@ function Payment({isMenuOpen, setIsMenuOpen}) {
   return (
     <div className="min-h-screen bg-white mt-[9rem]">
       <Aside isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <CardAside setIsCartOpen={setIsCartOpen} isCartOpen={isCartOpen} />
       <div className="w-full sm:w-[30rem] md:w-[40rem] flex flex-col items-center justify-center text-sm sm:text-lg m-auto px-5">
         <div className="w-full flex flex-wrap justify-between gap-2 p-2">
           <p
@@ -154,9 +156,24 @@ function Payment({isMenuOpen, setIsMenuOpen}) {
               required
               className="w-full bg-gray-100 outline-none rounded-xl border-2 border-transparent focus:border-green-500 p-3"
               type="text"
+              placeholder="Dirección"
+              maxLength={70}
+            />
+            <input
+              required
+              className="w-full bg-gray-100 outline-none rounded-xl border-2 border-transparent focus:border-green-500 p-3"
+              type="text"
               placeholder="Código postal"
               maxLength={6}
               minLength={6}
+            />
+            <Textarea
+              size="lg"
+              variant="bordered"
+              color="success"
+              label="Danos más detalles"
+              placeholder="Enter your description"
+              className="w-full"
             />
           </div>
         </div>

@@ -7,24 +7,20 @@ const styles = {
   buttonRight: "p-2 w-10 h-10",
 };
 
-export const CardProduct = () => {
+export const CardProduct = ({product}) => {
   return (
-    <div className="flex flex-row h-72 m-6">
+    <div className="group grid grid-cols-3 p-2 gap-3 cursor-pointer">
       <div>
         <Image
-          className="hover:scale-110"
-          src="https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEALMENDRAS.jpg?v=1670310178&width=200"
+          className="w-[100px] h-[100px] border-2 group-hover:border-green-600"
+          src={product.img}
           alt="product image"
         />
       </div>
-      <div className="pl-4">
-        <CardContent />
+      <div className="col-span-2">
+        <CardContent product={product}/>
         <div className="flex items-center">
-          <Counter styles={styles} />
-          <button className="mx-5 group">
-            Quitar
-            <div className="w-full scale-100 h-[1px] bg-black group-hover:scale-0 transition-all duration-500"></div>
-          </button>
+          <Counter styles={styles} product={product}/>
         </div>
       </div>
     </div>

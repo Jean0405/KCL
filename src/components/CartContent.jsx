@@ -1,14 +1,14 @@
 import { CardButton } from ".";
 
-export const CardContent = () => {
+export const CardContent = ({product}) => {
   return (
     <>
-      <h2 className="font-bold text-xl flex items-center justify-center">
-        <span>Tónico Anticaída Ancestral PREMIUM</span>
+      <h2 className="font-bold text-sm flex items-center justify-between">
+        <span>{product.name}</span>
         <CardButton />
       </h2>
 
-      <p className="text-gray-500 font-bold text-lg">$75.000</p>
+      <p className="text-green-700 font-bold text-lg">${product.price}</p>
     </>
   );
 };

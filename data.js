@@ -10,7 +10,7 @@ export const products = [
     id: 2,
     name: "Aceite de Árbol de Té",
     price: 92000,
-    img: "https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEARBOLDETE.jpg?v=1670310241&width=600",
+    img: "https://www.fusionselvatica.com/cdn/shop/products/ACEITEDEARBOLDETE.jpg?v=1670310241&width=700",
     promo: 10,
   },
   {

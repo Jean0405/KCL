@@ -1,3 +1,5 @@
+import { toast } from "sonner";
+
 export const handleAddToCart = (product, setCart, action) => {
   // Create a new product object with quantity set to 1
   const NewProduct = {
@@ -30,6 +32,7 @@ export const handleAddToCart = (product, setCart, action) => {
       setCart(updatedCart);
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     }
+    toast.success("Producto agregado");
   }
   // If the action is to remove a product
   else if (action === "remove") {
@@ -50,5 +53,6 @@ export const handleAddToCart = (product, setCart, action) => {
       setCart(updatedCart);
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     }
+    toast.info("Producto eliminado");
   }
 };

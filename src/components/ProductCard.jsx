@@ -45,8 +45,8 @@ function ProductCard() {
                 onClick={() =>
                   redirect(`/product/${product.id}`, {
                     state: {
-                      productData: product
-                    }
+                      productData: product,
+                    },
                   })
                 }
               />
