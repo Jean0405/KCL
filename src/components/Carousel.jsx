@@ -18,9 +18,9 @@ export default function Carousel() {
       <Swiper
         navigation={true}
         modules={[Navigation]}
-        className="min-h-[40rem] mt-5 cursor-pointer pt-[10rem]"
+        className="min-h-[40rem] mt-5 cursor-pointer"
       >
-        <SwiperSlide className="flex flex-col justify-center items-center p-2 ">
+        <SwiperSlide className="flex flex-col justify-center items-center px-2 pt-[8rem]">
           <div className="relative w-full h-full flex justify-center">
             <Image
               className="h-[40rem] w-full object-cover"

@@ -1,8 +1,11 @@
 import DarkModeButton from "./DarkModeButton";
 import { Badge } from "@nextui-org/react";
+import { useCartContext } from "../utils/CartContext";
 import Promo from "./Promo";
 
-function NavigationBar({ setIsMenuOpen, cart }) {
+function NavigationBar({ setIsMenuOpen }) {
+  const { cart } = useCartContext();
+  
   return (
     <div className="fixed w-full top-0 z-20">
       <Promo />

@@ -1,8 +1,10 @@
 import { Button, Image } from "@nextui-org/react";
 import { products } from "../../data";
 import { useEffect } from "react";
+import { useCartContext } from "../utils/CartContext";
 
-function ProductCard({ setCart }) {
+function ProductCard() {
+  const { cart, setCart } = useCartContext();
   const handleAddToCart = (product) => {
     const NewProduct = {
       ...product,
@@ -29,11 +31,6 @@ function ProductCard({ setCart }) {
     }
   };
 
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(storedCart);
-  }, []);
-
   return (
     <div className="mt-10">
       <h1 className="text-center font-bold text-4xl text-gray-600">
@@ -48,8 +45,10 @@ function ProductCard({ setCart }) {
             key={product.id}
           >
             {product.promo && (
-              <div className="absolute w-[8rem] h-[2rem] flex justify-start items-center top-[1rem] -right-10 sm:-right-4
-               flex bg-red-600 text-white z-10 px-1">
+              <div
+                className="absolute w-[8rem] h-[2rem] justify-start items-center top-[1rem] -right-10 sm:-right-4
+               flex bg-red-600 text-white z-10 px-1"
+              >
                 <p className="font-bold flex text-xl">
                   - {product.promo} <span>%</span>
                 </p>

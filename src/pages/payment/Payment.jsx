@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import NavigationBar from "../../components/NavigationBar";
 import Aside from "../../components/Aside";
 
-import { Checkbox, Divider } from "@nextui-org/react";
+import { Checkbox } from "@nextui-org/react";
 import ProductItem from "../../components/ProductItem";
 
 const departamentosColombia = [
@@ -40,7 +39,7 @@ const departamentosColombia = [
   "Vichada",
 ];
 
-function Payment({isMenuOpen, setIsMenuOpen, cart, setCart}) {
+function Payment({isMenuOpen, setIsMenuOpen}) {
   const [isOpenPurchaseSummary, setIsOpenPurchaseSummary] = useState(false);
 
   const handleOpenPurchaseSummary = () => {
@@ -49,7 +48,6 @@ function Payment({isMenuOpen, setIsMenuOpen, cart, setCart}) {
 
   return (
     <div className="min-h-screen bg-white mt-[9rem]">
-      <NavigationBar setIsMenuOpen={setIsMenuOpen} cart={cart}/>
       <Aside isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <div className="w-full sm:w-[30rem] md:w-[40rem] flex flex-col items-center justify-center text-sm sm:text-lg m-auto px-5">
         <div className="w-full flex flex-wrap justify-between gap-2 p-2">
