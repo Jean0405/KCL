@@ -1,35 +1,12 @@
 import { Button, Image } from "@nextui-org/react";
 import { products } from "../../data";
-import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { useCartContext } from "../utils/CartContext";
+import { handleAddToCart } from "../utils/AddCart";
 
 function ProductCard() {
-  const { cart, setCart } = useCartContext();
-  const handleAddToCart = (product) => {
-    const NewProduct = {
-      ...product,
-      quantity: 1,
-    };
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingProduct = storedCart.find(
-      (item) => item.id === NewProduct.id
-    );
-
-    if (existingProduct) {
-      const updatedCart = storedCart.map((item) =>
-        item.id === NewProduct.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      );
-
-      setCart(updatedCart);
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-    } else {
-      const updatedCart = [...storedCart, NewProduct];
-      setCart(updatedCart);
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
-    }
-  };
+  let redirect = useNavigate();
+  const { setCart } = useCartContext();
 
   return (
     <div className="mt-10">
@@ -56,7 +33,7 @@ function ProductCard() {
             )}
             <div className="relative overflow-hidden rounded-xl group">
               <Button
-                onClick={() => handleAddToCart(product)}
+                onClick={() => handleAddToCart(product, setCart, "add")}
                 className="absolute w-full bottom-0 bg-black text-white font-semibold rounded-none z-10 hover:bg-green-100 hover:text-black"
               >
                 Añadir
@@ -65,6 +42,13 @@ function ProductCard() {
                 className="hover:scale-110 z-0"
                 src={product.img}
                 alt="product image"
+                onClick={() =>
+                  redirect(`/product/${product.id}`, {
+                    state: {
+                      productData: product
+                    }
+                  })
+                }
               />
             </div>
             <div className="w-full flex flex-col items-center text-sm text-black py-1">
@@ -73,7 +57,6 @@ function ProductCard() {
             </div>
           </div>
         ))}
-        {/* ------------------------------------------------------------ */}
       </div>
     </div>
   );

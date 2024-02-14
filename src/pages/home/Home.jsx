@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Aside from "../../components/Aside";
 import Carousel from "../../components/Carousel";
 import ProductCard from "../../components/ProductCard";

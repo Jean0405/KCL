@@ -1,7 +1,7 @@
 import { useCounter } from "../hooks/useCounter";
 
-export const Counter = ({ styles }) => {
-  const { counter, decrement, increment } = useCounter();
+export const Counter = ({ styles, product }) => {
+  const { counter, decrement, increment } = useCounter(product);
 
   return (
     <div className={`flex items-center ${styles?.div}`}>

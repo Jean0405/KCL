@@ -1,15 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCartContext } from "../utils/CartContext";
+import { handleAddToCart } from "../utils/AddCart";
 
-export const useCounter = (initialValue = 1) => {
-  const [counter, setCounter] = useState(initialValue);
+export const useCounter = (product) => {
+  const { cart, setCart } = useCartContext();
+  const [counter, setCounter] = useState(0);
+  const productCart = cart.find((item) => item.id === product.id);
 
-  const increment = (value = 1) => {
-    setCounter((current) => current + value);
+  useEffect(() => {
+    if (productCart) {
+      setCounter(productCart.quantity);
+    } else {
+      setCounter(0);
+    }
+  }, [cart, product, productCart]);
+
+  const increment = () => {
+    setCounter((current) => current + 1);
+    handleAddToCart(product, setCart, "add");
   };
 
-  const decrement = (value = 1) => {
-    if (counter === 1) return;
-    setCounter((current) => current - value);
+  const decrement = () => {
+    if (counter === 1) {
+      handleAddToCart(product, setCart, "remove");
+      return;
+    }
+    setCounter((current) => current - 1);
+    handleAddToCart(product, setCart, "remove");
   };
 
   return {
