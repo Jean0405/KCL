@@ -1,19 +1,21 @@
 import { useCounter } from "../hooks/useCounter";
 
-export const Counter = () => {
+export const Counter = ({ styles }) => {
   const { counter, decrement, increment } = useCounter();
 
   return (
-    <div className="flex items-center justify-center">
+    <div className={`flex items-center ${styles?.div}`}>
       <button
-        className="bg-zinc-200 hover:bg-zinc-800 text-black hover:text-white font-bold py-2 px-4 rounded-l w-14 h-10"
+        className={`bg-zinc-200 hover:bg-zinc-800 text-black hover:text-white font-bold rounded-l ${styles?.buttonLeft} `}
         onClick={() => decrement()}
       >
         -
       </button>
-      <span className="bg-white py-2 px-4 w-14 h-10">{counter}</span>
+      <span className={`bg-white py-2 px-4 h-10 ${styles?.span}`}>
+        {counter}
+      </span>
       <button
-        className="bg-zinc-200 hover:bg-zinc-800 text-black hover:text-white font-bold py-2 px-4 rounded-r w-14 h-10"
+        className={`bg-zinc-200 hover:bg-zinc-800 text-black hover:text-white font-bold rounded-r  ${styles?.buttonRight}`}
         onClick={() => increment()}
       >
         +
